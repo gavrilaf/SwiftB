@@ -25,7 +25,7 @@ extension Stat {
        Computes  median of the sequence
     */
     public static func median<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
-        return Stat.nlognMedian(s)
+        return Stat.nlognMedian(s) // TODO: improve implementation for O(n), use article https://rcoh.me/posts/linear-time-median-finding/
     }
 }
 
