@@ -28,7 +28,7 @@ extension SwiftB {
 
 extension SwiftB {
     
-    public static generateDiscrete(variable: DiscreteRandomVariable, count: Int) -> [Int] {
+    public static func generateDiscrete(variable: DiscreteRandomVariable, count: Int) -> [Int] {
         return (0..<count).map { (_) in
             variable.value()
         }
