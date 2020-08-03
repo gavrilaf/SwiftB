@@ -1,6 +1,6 @@
 import Foundation
 
-extension Stat {
+extension SwiftB {
 
     /**
         Computes arithmetic mean of the sequence
@@ -25,12 +25,12 @@ extension Stat {
        Computes  median of the sequence
     */
     public static func median<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
-        return Stat.nlognMedian(s) // TODO: improve implementation for O(n), use article https://rcoh.me/posts/linear-time-median-finding/
+        return SwiftB.nlognMedian(s) // TODO: improve implementation for O(n), use article https://rcoh.me/posts/linear-time-median-finding/
     }
 }
 
 // MARK:- helpers
-extension Stat {
+extension SwiftB {
     static func nlognMedian<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
         let sorted = s.sorted()
         let len = sorted.count
@@ -41,7 +41,7 @@ extension Stat {
             return sorted[0]
         }
         
-        if Stat.isOdd(len) {
+        if SwiftB.isOdd(len) {
             return sorted[len / 2]
         } else {
             return (sorted[len / 2 - 1] + sorted[len / 2]) / 2
