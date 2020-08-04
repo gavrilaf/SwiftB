@@ -3,6 +3,8 @@ import Foundation
 public struct SwiftB {
         
     public static var standardUniformGenerator: StandardUniformVariable = SystemStandardUniformVariable()
+    
+    static let delta = 0.000001
 }
 
 
@@ -14,6 +16,35 @@ extension SwiftB {
     
     public static func isOdd<T: BinaryInteger>(_ n: T) -> Bool {
         return !isEven(n)
+    }
+}
+
+extension SwiftB {
+    
+    public typealias ComparableSignedNumeric = Comparable & SignedNumeric
+    
+    public static func closeEqual<T: ComparableSignedNumeric>(_ lhs: T, _ rhs: T, delta: T) -> Bool {
+        let s = abs(rhs - lhs)
+        return s <= delta
+    }
+    
+    public static func closeEqual<S: Sequence>(_ lhs: S, _ rhs: S, delta: S.Element) -> Bool where S.Element: ComparableSignedNumeric {
+        var li = lhs.makeIterator()
+        var ri = rhs.makeIterator()
+        
+        var le = li.next()
+        var re = ri.next()
+        
+        while let _le = le, let _re = re {
+            if !closeEqual(_le, _re, delta: delta) {
+                return false
+            }
+            
+            le = li.next()
+            re = ri.next()
+        }
+        
+        return le == nil && re == nil
     }
 }
 

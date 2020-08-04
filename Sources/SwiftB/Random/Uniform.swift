@@ -17,6 +17,7 @@ open class StandardUniformVariable: ContinuousRandomVariable {
 
 final class SystemStandardUniformVariable: StandardUniformVariable {
     public override func value() -> Double {
-        return drand48()
+        //return drand48()
+        return Double.random(in: 0...1)
     }
 }
