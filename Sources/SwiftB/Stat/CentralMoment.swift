@@ -1,4 +1,5 @@
 import Foundation
+import Numerics
 
 extension SwiftB {
     
@@ -10,7 +11,7 @@ extension SwiftB {
         var count = 0
         var sum: E = 0
         for v in s {
-            sum += (v - mean).toPower(E(order))
+            sum += E.pow((v - mean), order)
             count += 1
         }
         

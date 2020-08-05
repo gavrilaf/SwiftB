@@ -1,11 +1,12 @@
 import Foundation
+import Numerics
 
 extension SwiftB {
 
     /**
         Computes arithmetic mean of the sequence
      */
-    public static func mean<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
+    public static func mean<T: Sequence>(_ s: T) -> T.Element where T.Element: Real {
         var sum = T.Element(0)
         var count = 0
         
@@ -29,14 +30,14 @@ extension SwiftB {
     /**
        Computes  median of the sequence
     */
-    public static func median<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
+    public static func median<T: Sequence>(_ s: T) -> T.Element where T.Element: BinaryFloatingPoint {
         return SwiftB.nlognMedian(s) // TODO: improve implementation for O(n), use article https://rcoh.me/posts/linear-time-median-finding/
     }
 }
 
 // MARK:- helpers
 extension SwiftB {
-    static func nlognMedian<T: Sequence>(_ s: T) -> T.Element where T.Element: FloatingPoint {
+    static func nlognMedian<T: Sequence>(_ s: T) -> T.Element where T.Element: BinaryFloatingPoint {
         let sorted = s.sorted()
         let len = sorted.count
         
