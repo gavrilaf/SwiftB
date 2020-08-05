@@ -4,12 +4,22 @@ import Foundation
  Standard uniform distribution (uniform distibution on [0, 1]
  */
 open class StandardUniformVariable: ContinuousRandomVariable {
-    public final var range: Range<Double> {
-        return Range(uncheckedBounds: (0, 1))
+    init(bounds: ClosedRange<Double>) {
+        self.bounds = bounds
     }
+    
+    public let bounds: ClosedRange<Double>
     
     public func value() -> Double {
         fatalError("not implemented")
+    }
+    
+    public var expectation: Double {
+        return (bounds.upperBound - bounds.lowerBound) / 2
+    }
+    
+    public var variance: Double {
+        return Double.pow((bounds.upperBound - bounds.lowerBound), 2) / 12
     }
 }
 
@@ -17,7 +27,6 @@ open class StandardUniformVariable: ContinuousRandomVariable {
 
 final class SystemStandardUniformVariable: StandardUniformVariable {
     public override func value() -> Double {
-        //return drand48()
-        return Double.random(in: 0...1)
+        return Double.random(in: bounds)
     }
 }

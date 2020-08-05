@@ -1,9 +1,10 @@
 import Foundation
 
 public struct SwiftB {
-        
-    public static var standardUniformGenerator: StandardUniformVariable = SystemStandardUniformVariable()
     
+    public static var standardUniformGenerator: StandardUniformVariable = SystemStandardUniformVariable(bounds: standardBounds)
+    
+    static let standardBounds = ClosedRange(uncheckedBounds: (lower: 0.0, upper:1.0))
     static let delta = 0.000001
 }
 
@@ -60,6 +61,12 @@ extension SwiftB {
 extension SwiftB {
     
     public static func generateDiscrete(variable: DiscreteRandomVariable, count: Int) -> [Int] {
+        return (0..<count).map { (_) in
+            variable.value()
+        }
+    }
+    
+    public static func generateContinuous(variable: ContinuousRandomVariable, count: Int) -> [Double] {
         return (0..<count).map { (_) in
             variable.value()
         }

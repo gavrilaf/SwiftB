@@ -9,8 +9,8 @@ public protocol RandomVariable {
 /**
  Base protocol for the continuous random variable
  */
-public protocol ContinuousRandomVariable {
-    var range: Range<Double> { get }
+public protocol ContinuousRandomVariable: RandomVariable {
+    var bounds: ClosedRange<Double> { get }
     
     func value() -> Double
 }
@@ -19,6 +19,6 @@ public protocol ContinuousRandomVariable {
 /**
  Base protocol for the discrete random variable
  */
-public protocol DiscreteRandomVariable {
+public protocol DiscreteRandomVariable: RandomVariable {
     func value() -> Int
 }

@@ -35,10 +35,10 @@ final class BernoulliDistibutionTests: XCTestCase {
         }
         
         for _ in 0...10 {
-            check(probability: 0.5, count: 1000, bias: 7)
-            check(probability: 0.7, count: 1000, bias: 5)
-            check(probability: 0.1, count: 1000, bias: 4)
-            check(probability: 0.95, count: 1000, bias: 3)
+            check(probability: 0.5, count: 10000, bias: 5)
+            check(probability: 0.7, count: 10000, bias: 5)
+            check(probability: 0.1, count: 10000, bias: 3)
+            check(probability: 0.95, count: 10000, bias: 2)
         }
     }
     
