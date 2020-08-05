@@ -20,6 +20,11 @@ extension SwiftB {
         
         return sum / T.Element(count)
     }
+    
+    // TODO: Temporary solution, fix it!
+    public static func mean<T: Sequence>(_ s: T) -> Double where T.Element: BinaryInteger {
+        return mean(s.map { Double($0) })
+    }
 
     /**
        Computes  median of the sequence

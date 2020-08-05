@@ -24,3 +24,4 @@ extension Float: Real {
         return pow(self, exponent)
     }
 }
+

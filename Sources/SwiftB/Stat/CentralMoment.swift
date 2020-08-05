@@ -20,4 +20,9 @@ extension SwiftB {
         
         return sum / E(count)
     }
+    
+    // TODO: Temporary solution, fix it!
+    public static func centralMoment<S: Sequence>(_ s: S, order: Int) -> Double where S.Element: BinaryInteger {
+        return centralMoment(s.map { Double($0) }, order: order)
+    }
 }

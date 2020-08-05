@@ -16,7 +16,15 @@ public struct BernoulliDistribution: DiscreteRandomVariable {
         return 0
     }
     
-    private let probability: Double
+    public var expectation: Double {
+        return probability
+    }
+    
+    public var variance: Double {
+        return probability * (1 - probability)
+    }
+    
+    public let probability: Double
 }
 
 extension BernoulliDistribution {
