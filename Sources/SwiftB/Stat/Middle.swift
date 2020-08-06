@@ -47,7 +47,7 @@ extension SwiftB {
             return sorted[0]
         }
         
-        if SwiftB.isOdd(len) {
+        if len.isOdd {
             return sorted[len / 2]
         } else {
             return (sorted[len / 2 - 1] + sorted[len / 2]) / 2

@@ -1,8 +1,13 @@
 import Foundation
 
 public protocol RandomVariable {
-    var expectation: Double { get }
+    associatedtype Value: SignedNumeric & Comparable
     
+    var bounds: ClosedRange<Value> { get }
+    
+    func value() -> Value
+    
+    var expectation: Double { get }
     var variance: Double { get }
 }
 
@@ -20,5 +25,7 @@ public protocol ContinuousRandomVariable: RandomVariable {
  Base protocol for the discrete random variable
  */
 public protocol DiscreteRandomVariable: RandomVariable {
+    var bounds: ClosedRange<Int> { get }
+    
     func value() -> Int
 }

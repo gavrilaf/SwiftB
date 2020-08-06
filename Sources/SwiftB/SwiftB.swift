@@ -8,18 +8,6 @@ public struct SwiftB {
     static let delta = 0.000001
 }
 
-
-extension SwiftB {
-    
-    public static func isEven<T: BinaryInteger>(_ n: T) -> Bool {
-        return n.isMultiple(of: 2)
-    }
-    
-    public static func isOdd<T: BinaryInteger>(_ n: T) -> Bool {
-        return !isEven(n)
-    }
-}
-
 extension SwiftB {
     
     public typealias ComparableSignedNumeric = Comparable & SignedNumeric
@@ -60,13 +48,13 @@ extension SwiftB {
 
 extension SwiftB {
     
-    public static func generateDiscrete(variable: DiscreteRandomVariable, count: Int) -> [Int] {
+    public static func generateDiscrete<V: DiscreteRandomVariable>(variable: V, count: Int) -> [Int] {
         return (0..<count).map { (_) in
             variable.value()
         }
     }
     
-    public static func generateContinuous(variable: ContinuousRandomVariable, count: Int) -> [Double] {
+    public static func generateContinuous<V: ContinuousRandomVariable>(variable: V, count: Int) -> [Double] {
         return (0..<count).map { (_) in
             variable.value()
         }

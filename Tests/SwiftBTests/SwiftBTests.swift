@@ -2,13 +2,13 @@ import XCTest
 @testable import SwiftB
 
 final class SwiftBTests: XCTestCase {
-    func testEvenOdd() {
+    /*func testEvenOdd() {
         XCTAssertTrue(SwiftB.isEven(2))
         XCTAssertFalse(SwiftB.isEven(3))
         
         XCTAssertTrue(SwiftB.isOdd(21))
         XCTAssertFalse(SwiftB.isOdd(124))
-    }
+    }*/
     
     func testCloseEqual() {
         XCTAssertTrue(SwiftB.closeEqual(10, 12, delta: 2))
@@ -32,7 +32,7 @@ final class SwiftBTests: XCTestCase {
     }
     
     static var allTests = [
-        ("testEvenOdd", testEvenOdd),
+        //("testEvenOdd", testEvenOdd),
         ("testCloseEqual", testCloseEqual),
     ]
 }
