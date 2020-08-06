@@ -3,6 +3,8 @@ import XCTest
 
 final class BernoulliDistibutionTests: XCTestCase {
     
+    let triesCount = 5000
+    
     func testExpectedFrequencies() {
         XCTAssertEqual([50, 50], BernoulliDistribution(probability: 0.5).expectedFrequencies(count: 100))
         XCTAssertEqual([30, 70], BernoulliDistribution(probability: 0.7).expectedFrequencies(count: 100))
@@ -35,10 +37,10 @@ final class BernoulliDistibutionTests: XCTestCase {
         }
         
         for _ in 0...10 {
-            check(probability: 0.5, count: 10000, bias: 5)
-            check(probability: 0.7, count: 10000, bias: 5)
-            check(probability: 0.1, count: 10000, bias: 3)
-            check(probability: 0.95, count: 10000, bias: 2)
+            check(probability: 0.5, count: triesCount, bias: 5)
+            check(probability: 0.7, count: triesCount, bias: 5)
+            check(probability: 0.1, count: triesCount, bias: 3)
+            check(probability: 0.95, count: triesCount, bias: 2)
         }
     }
     
@@ -55,10 +57,10 @@ final class BernoulliDistibutionTests: XCTestCase {
         }
         
         for _ in 0...10 {
-            check(probability: 0.5, count: 10000)
-            check(probability: 0.7, count: 10000)
-            check(probability: 0.1, count: 10000)
-            check(probability: 0.95, count: 10000)
+            check(probability: 0.5, count: triesCount)
+            check(probability: 0.7, count: triesCount)
+            check(probability: 0.1, count: triesCount)
+            check(probability: 0.95, count: triesCount)
         }
     }
 

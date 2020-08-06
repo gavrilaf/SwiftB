@@ -11,7 +11,7 @@ public struct BernoulliDistribution: DiscreteRandomVariable {
     
     public func value() -> Int {
         let p = SwiftB.standardUniformGenerator.value()
-        if p <= self.probability - SwiftB.delta {
+        if p <= self.probability {
             return 1
         }
         

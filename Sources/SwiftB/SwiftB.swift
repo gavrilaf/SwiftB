@@ -4,8 +4,7 @@ public struct SwiftB {
     
     public static var standardUniformGenerator: UniformDistribution = SystemUniformDistribution(bounds: standardBounds)
     
-    static let standardBounds = ClosedRange(uncheckedBounds: (lower: 0.0, upper:1.0))
-    static let delta = 0.000001
+    public static let standardBounds = ClosedRange(uncheckedBounds: (lower: 0.0, upper:1.0))
 }
 
 extension SwiftB {
