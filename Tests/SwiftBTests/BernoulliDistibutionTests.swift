@@ -31,7 +31,7 @@ final class BernoulliDistibutionTests: XCTestCase {
             let expected = d.expectedFrequencies(count: count)
             let actual = h.frequencies.map { $0.frequency }
             
-            XCTAssertTrue(SwiftB.closeEqual(expected, actual, delta: validDiff), "expected \(expected), real \(actual), diff \(validDiff)")
+            XCTAssertTrue(closeEqual(expected, actual, delta: validDiff), "expected \(expected), real \(actual), diff \(validDiff)")
         }
         
         for _ in 0...10 {
@@ -50,8 +50,8 @@ final class BernoulliDistibutionTests: XCTestCase {
             let mean = SwiftB.mean(s)
             let variance = SwiftB.centralMoment(s, order: 2)
             
-            XCTAssertTrue(SwiftB.closeEqual(d.expectation, mean, delta: 0.05), "expectation: expected \(d.expectation), real \(mean)")
-            XCTAssertTrue(SwiftB.closeEqual(d.variance, variance, delta: 0.05), "variance: expected \(d.variance), real \(variance)")
+            XCTAssertTrue(closeEqual(d.expectation, mean, delta: 0.05), "expectation: expected \(d.expectation), real \(mean)")
+            XCTAssertTrue(closeEqual(d.variance, variance, delta: 0.05), "variance: expected \(d.variance), real \(variance)")
         }
         
         for _ in 0...10 {

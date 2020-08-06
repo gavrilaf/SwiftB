@@ -1,9 +1,9 @@
 import Foundation
 
 /**
- Standard uniform distribution (uniform distibution on [0, 1]
+ Uniform distribution
  */
-open class StandardUniformVariable: ContinuousRandomVariable {
+open class UniformDistribution: ContinuousRandomVariable {
     init(bounds: ClosedRange<Double>) {
         self.bounds = bounds
     }
@@ -25,7 +25,7 @@ open class StandardUniformVariable: ContinuousRandomVariable {
 
 // MARK:- implementation
 
-final class SystemStandardUniformVariable: StandardUniformVariable {
+final class SystemUniformDistribution: UniformDistribution {
     public override func value() -> Double {
         return Double.random(in: bounds)
     }

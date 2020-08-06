@@ -10,7 +10,7 @@ final class CentralMomentsTests: XCTestCase {
             let moment = SwiftB.centralMoment(s, order: order)
             let expected = expected[order]
             
-            XCTAssertTrue(SwiftB.closeEqual(expected, moment, delta: 0.0000000001), "central moment for order \(order), expected \(expected), actual \(moment)")
+            XCTAssertTrue(closeEqual(expected, moment, delta: 0.0000000001), "central moment for order \(order), expected \(expected), actual \(moment)")
         }
     }
     
@@ -22,19 +22,19 @@ final class CentralMomentsTests: XCTestCase {
             let moment = SwiftB.centralMoment(s, order: order)
             let expected = expected[order]
             
-            XCTAssertTrue(SwiftB.closeEqual(expected, moment, delta: 0.01), "central moment for order \(order), expected \(expected), actual \(moment)")
+            XCTAssertTrue(closeEqual(expected, moment, delta: 0.01), "central moment for order \(order), expected \(expected), actual \(moment)")
         }
     }
     
     func testEmpty() {
         let s: [Float] = []
         let moment = SwiftB.centralMoment(s, order: 1) // Compiler crashes in case SwiftB.centralMoment([], order: 1)
-        XCTAssertTrue(SwiftB.closeEqual(0, moment, delta: 0.0000000001))
+        XCTAssertTrue(closeEqual(0, moment, delta: 0.0000000001))
     }
     
     func testOneItem() {
         let moment = SwiftB.centralMoment([1.0], order: 1)
-        XCTAssertTrue(SwiftB.closeEqual(0, moment, delta: 0.0000000001))
+        XCTAssertTrue(closeEqual(0, moment, delta: 0.0000000001))
     }
     
 }
