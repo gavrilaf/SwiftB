@@ -1,31 +1,38 @@
 import Foundation
 import Numerics
 
-extension SwiftB {
+extension Array where Self.Element: Real {
+    public func mean() -> Self.Element  {
+        guard count != 0 else { return 0 }
+        
+        var sum = Self.Element(0)
+        self.withUnsafeBufferPointer { (buf)in
+            for i in 0..<self.count {
+                sum += buf[i]
+            }
+        }
+        
+        return sum / Self.Element(count)
+    }
+}
 
-    /**
-        Computes arithmetic mean of the sequence
-     */
-    public static func mean<T: Sequence>(_ s: T) -> T.Element where T.Element: Real {
-        var sum = T.Element(0)
-        var count = 0
+extension Array where Self.Element: BinaryInteger {
+    public func mean() -> Double  {
+        guard count != 0 else { return 0 }
         
-        for t in s {
-            sum += t
-            count += 1
+        var sum = 0.0
+        self.withUnsafeBufferPointer { (buf)in
+            for i in 0..<self.count {
+                sum += Double(buf[i])
+            }
         }
         
-        if count == 0 {
-            return 0
-        }
-        
-        return sum / T.Element(count)
+        return sum / Double(count)
     }
-    
-    // TODO: Temporary solution, fix it!
-    public static func mean<T: Sequence>(_ s: T) -> Double where T.Element: BinaryInteger {
-        return mean(s.map { Double($0) })
-    }
+}
+
+
+extension SwiftB {
 
     /**
        Computes  median of the sequence

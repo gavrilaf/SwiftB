@@ -19,14 +19,20 @@ extension SwiftB {
 extension SwiftB {
     
     public static func generateDiscrete<V: DiscreteRandomVariable>(variable: V, count: Int) -> [Int] {
-        return (0..<count).map { (_) in
-            variable.value()
+        return Array<Int>(unsafeUninitializedCapacity: count) { (buf, outCount) in
+            for i in 0..<count {
+                buf[i] = variable.value()
+            }
+            outCount = count
         }
     }
     
     public static func generateContinuous<V: ContinuousRandomVariable>(variable: V, count: Int) -> [Double] {
-        return (0..<count).map { (_) in
-            variable.value()
+        return Array<Double>(unsafeUninitializedCapacity: count) { (buf, outCount) in
+            for i in 0..<count {
+                buf[i] = variable.value()
+            }
+            outCount = count
         }
     }
 }

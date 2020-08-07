@@ -3,16 +3,16 @@ import XCTest
 
 final class MiddleTests: XCTestCase {
     func testMean() {
-        XCTAssertEqual(SwiftB.mean([]), 0)
-        XCTAssertEqual(SwiftB.mean([10]), 10)
+        XCTAssertEqual([].mean(), 0)
+        XCTAssertEqual([10].mean(), 10)
         
-        XCTAssertEqual(SwiftB.mean([1, 1, 1]), 1)
-        XCTAssertEqual(SwiftB.mean([1, 2, 3]), 2)
+        XCTAssertEqual([1, 1, 1].mean(), 1)
+        XCTAssertEqual([1, 2, 3].mean(), 2)
         
-        XCTAssertEqual(SwiftB.mean([1.1, 1.2, 1.3, 1.4, 1.5]), 1.3)
-        XCTAssertEqual(SwiftB.mean([5, 6]), 5.5)
+        XCTAssertEqual([1.1, 1.2, 1.3, 1.4, 1.5].mean(), 1.3, accuracy: TH.accuracy)
+        XCTAssertEqual([5, 6].mean(), 5.5, accuracy: TH.accuracy)
     }
-
+    
     func testMedian() {
         XCTAssertEqual(SwiftB.median([]), 0)
         XCTAssertEqual(SwiftB.median([10]), 10)

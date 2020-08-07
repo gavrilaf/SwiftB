@@ -2,23 +2,20 @@ import XCTest
 @testable import SwiftB
 
 final class BinomialDistibutionTests: XCTestCase {
-
-    let accuracy = 0.0000001
-
     func testDistributionProperties() {
         let b = BinomialDistribution(trials: 100, propability: 0.7)
         
         XCTAssertEqual(0...100, b.bounds)
         
-        XCTAssertEqual(70, b.expectation, accuracy: accuracy)
-        XCTAssertEqual(21, b.variance, accuracy: accuracy)
+        XCTAssertEqual(70, b.expectation, accuracy: TH.accuracy)
+        XCTAssertEqual(21, b.variance, accuracy: TH.accuracy)
     }
     
     func testSequenceProperties() {
         func check(distr: BinomialDistribution, count: Int) {
             let s = SwiftB.generateDiscrete(variable: distr, count: count)
-            let mean = SwiftB.mean(s)
-            let variance = SwiftB.centralMoment(s, order: 2)
+            let mean = s.mean()
+            let variance = s.centralMoment(order: 2)
             
             XCTAssertEqual(distr.expectation, mean, accuracy: 1.0, "expectation: expected \(distr.expectation), real \(mean)")
             XCTAssertEqual(distr.variance, variance, accuracy: 3.0, "variance: expected \(distr.variance), real \(variance)")

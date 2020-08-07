@@ -1,29 +1,41 @@
 import Foundation
 import Numerics
 
-extension SwiftB {
-    
-    public static func centralMoment<S: Sequence>(_ s: S, order: Int) -> S.Element where S.Element: Real {
-        typealias E = S.Element
+
+extension Array where Self.Element: Real {
+    public func centralMoment(order: Int) -> Self.Element  {
+        guard count != 0 else { return 0 }
         
-        let mean = SwiftB.mean(s)
+        typealias E = Self.Element
         
-        var count = 0
-        var sum: E = 0
-        for v in s {
-            sum += E.pow((v - mean), order)
-            count += 1
+        let mean = self.mean()
+        
+        var sum = Self.Element(0)
+        self.withUnsafeBufferPointer { (buf) in
+            for i in 0..<self.count {
+                sum += Self.Element.pow(buf[i] - mean, order)
+            }
         }
         
-        if count == 0 {
-            return E(count)
-        }
-        
-        return sum / E(count)
-    }
-    
-    // TODO: Temporary solution, fix it!
-    public static func centralMoment<S: Sequence>(_ s: S, order: Int) -> Double where S.Element: BinaryInteger {
-        return centralMoment(s.map { Double($0) }, order: order)
+        return sum / Self.Element(count)
     }
 }
+
+extension Array where Self.Element: BinaryInteger {
+    public func centralMoment(order: Int) -> Double  {
+        guard count != 0 else { return 0 }
+        
+        let mean = self.mean()
+        
+        var sum = 0.0
+        self.withUnsafeBufferPointer { (buf) in
+            for i in 0..<self.count {
+                sum += Double.pow(Double(buf[i]) - mean, order)
+            }
+        }
+        
+        return sum / Double(count)
+    }
+}
+
+

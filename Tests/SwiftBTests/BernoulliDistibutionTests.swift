@@ -49,8 +49,8 @@ final class BernoulliDistibutionTests: XCTestCase {
             let d = BernoulliDistribution(probability: probability)
             let s = SwiftB.generateDiscrete(variable: d, count: count)
             
-            let mean = SwiftB.mean(s)
-            let variance = SwiftB.centralMoment(s, order: 2)
+            let mean = s.mean()
+            let variance = s.centralMoment(order: 2)
             
             XCTAssertTrue(closeEqual(d.expectation, mean, delta: 0.05), "expectation: expected \(d.expectation), real \(mean)")
             XCTAssertTrue(closeEqual(d.variance, variance, delta: 0.05), "variance: expected \(d.variance), real \(variance)")
