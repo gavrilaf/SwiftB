@@ -17,17 +17,14 @@ final class BinomialDistibutionTests: XCTestCase {
     func testSequenceProperties() {
         func check(distr: BinomialDistribution, count: Int) {
             let s = SwiftB.generateDiscrete(variable: distr, count: count)
-            
-            print(s)
-            
             let mean = SwiftB.mean(s)
             let variance = SwiftB.centralMoment(s, order: 2)
             
             XCTAssertEqual(distr.expectation, mean, accuracy: 1.0, "expectation: expected \(distr.expectation), real \(mean)")
-            XCTAssertEqual(distr.variance, variance, accuracy: 1.0, "variance: expected \(distr.variance), real \(variance)")
+            XCTAssertEqual(distr.variance, variance, accuracy: 3.0, "variance: expected \(distr.variance), real \(variance)")
         }
         
-        let triesCount = 500
+        let triesCount = 1000
         
         for _ in 0...10 {
             check(distr: BinomialDistribution(trials: 100, propability: 0.5), count: triesCount)
