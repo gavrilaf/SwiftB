@@ -27,5 +27,7 @@ public protocol ContinuousRandomVariable: RandomVariable {
 public protocol DiscreteRandomVariable: RandomVariable {
     var bounds: ClosedRange<Int> { get }
     
+    func pdf(_ v: Int) -> Double
+    
     func value() -> Int
 }

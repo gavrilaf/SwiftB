@@ -2,7 +2,7 @@ import XCTest
 import SwiftB
 
 struct T {
-    static let accuracy = 0.0000001
+    static let accuracy = 0.0000000000001
     
     static let tries = 5000
     

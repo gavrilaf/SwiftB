@@ -9,5 +9,5 @@ extension BinaryInteger {
     public var isOdd: Bool {
         return !self.isEven
     }
-    
 }
+

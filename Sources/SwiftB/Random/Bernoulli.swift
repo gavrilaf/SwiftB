@@ -19,6 +19,16 @@ public struct BernoulliDistribution: DiscreteRandomVariable {
         return 0
     }
     
+    public func pdf(_ v: Int) -> Double {
+        if v == 1 {
+            return probability
+        } else if v == 0 {
+            return 1 - probability
+        }
+        
+        return 0
+    }
+    
     public var expectation: Double {
         return probability
     }

@@ -30,9 +30,19 @@ final class MathTests: XCTestCase {
         XCTAssertFalse(closeEqual([1.1, 1.2], [1.1, 1.4], delta: 0.1))
     }
     
+    func testLnFactorial() {
+        XCTAssertEqual(0, lnFuctorial(0), accuracy: T.accuracy)
+        XCTAssertEqual(0, lnFuctorial(1), accuracy: T.accuracy)
+        XCTAssertEqual(8.52516136106541, lnFuctorial(7), accuracy: T.accuracy)
+        XCTAssertEqual(129.1239336391272, lnFuctorial(45), accuracy: T.accuracy)
+        XCTAssertEqual(1134.0452317908529, lnFuctorial(250), accuracy: T.accuracy)
+    }
+    
+        
     static var allTests = [
         ("testEvenOdd", testEvenOdd),
-        ("testCloseEqual", testCloseEqual)
+        ("testCloseEqual", testCloseEqual),
+        ("testLnFactorial", testLnFactorial)
     ]
 }
 
