@@ -10,8 +10,9 @@ public struct BernoulliDistribution: DiscreteRandomVariable {
     public let bounds = 0...1
     
     public func value() -> Int {
-        let p = SwiftB.standardUniform() // TODO: Check & compare with GSL implementation
-        if p <= self.probability {
+        let p = SwiftB.standardUniform() 
+        
+        if p < self.probability {
             return 1
         }
         
