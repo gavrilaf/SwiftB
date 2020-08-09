@@ -4,6 +4,10 @@ public struct SwiftB {
     
     public static var standardUniformGenerator: UniformDistribution = SystemUniformDistribution(bounds: standardBounds)
     
+    public static func standardUniform() -> Double {
+        return standardUniformGenerator.value()
+    }
+    
     public static let standardBounds = ClosedRange(uncheckedBounds: (lower: 0.0, upper:1.0))
 }
 

@@ -12,23 +12,26 @@ final class BinomialDistibutionTests: XCTestCase {
     }
     
     func testSequenceProperties() {
-        func check(distr: BinomialDistribution, count: Int) {
-            let s = SwiftB.generateDiscrete(variable: distr, count: count)
+        func check(distr: BinomialDistribution, tries: Int) {
+            let s = SwiftB.generateDiscrete(variable: distr, count: tries)
+            
             let mean = s.mean()
             let variance = s.centralMoment(order: 2)
             
-            XCTAssertEqual(distr.expectation, mean, accuracy: 1.0, "expectation: expected \(distr.expectation), real \(mean)")
-            XCTAssertEqual(distr.variance, variance, accuracy: 3.0, "variance: expected \(distr.variance), real \(variance)")
+            let accuracy = Double(tries) * 0.05 // 95 %
+            
+            XCTAssertEqual(distr.expectation, mean, accuracy: accuracy, "expectation: expected \(distr.expectation), real \(mean)")
+            XCTAssertEqual(distr.variance, variance, accuracy: accuracy, "variance: expected \(distr.variance), real \(variance)")
         }
         
-        let triesCount = 1000
+        let triesCount = 5000
         
-        for _ in 0...10 {
-            check(distr: BinomialDistribution(trials: 100, propability: 0.5), count: triesCount)
-            check(distr: BinomialDistribution(trials: 20, propability: 0.1), count: triesCount)
-            check(distr: BinomialDistribution(trials: 250, propability: 0.01), count: triesCount)
-            check(distr: BinomialDistribution(trials: 50, propability: 0.95), count: triesCount)
-        }
+        check(distr: BinomialDistribution(trials: 100, propability: 0.5), tries: triesCount)
+        check(distr: BinomialDistribution(trials: 20, propability: 0.1), tries: triesCount)
+        check(distr: BinomialDistribution(trials: 250, propability: 0.01), tries: triesCount)
+        check(distr: BinomialDistribution(trials: 50, propability: 0.95), tries: triesCount)
+        check(distr: BinomialDistribution(trials: 1000, propability: 0.5), tries: triesCount)
+        check(distr: BinomialDistribution(trials: 10000, propability: 0.87), tries: triesCount)
     }
 
     static var allTests = [

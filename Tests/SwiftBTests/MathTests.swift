@@ -32,7 +32,7 @@ final class MathTests: XCTestCase {
     
     static var allTests = [
         ("testEvenOdd", testEvenOdd),
-        ("testCloseEqual", testCloseEqual),
+        ("testCloseEqual", testCloseEqual)
     ]
 }
 

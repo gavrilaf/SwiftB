@@ -33,7 +33,8 @@ extension Array where Self.Element: BinaryInteger {
 
 
 extension SwiftB {
-
+    // TODO: Convert into the Array extension
+    
     /**
        Computes  median of the sequence
     */
