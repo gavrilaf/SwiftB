@@ -7,20 +7,20 @@ final class BinomialDistibutionTests: XCTestCase {
         
         XCTAssertEqual(0...100, b.bounds)
         
-        XCTAssertEqual(70, b.expectation, accuracy: TH.accuracy)
-        XCTAssertEqual(21, b.variance, accuracy: TH.accuracy)
+        XCTAssertEqual(70, b.expectation, accuracy: T.accuracy)
+        XCTAssertEqual(21, b.variance, accuracy: T.accuracy)
     }
     
     func testSequenceProperties() {
         func check(distr: BinomialDistribution, tries: Int) {
             let s = SwiftB.generateDiscrete(variable: distr, count: tries)
             
-            let mean = s.mean()
-            let variance = s.centralMoment(order: 2)
+            let expectation = s.expectation()
+            let variance = s.variance()
             
             let accuracy = Double(tries) * 0.05 // 95 %
             
-            XCTAssertEqual(distr.expectation, mean, accuracy: accuracy, "expectation: expected \(distr.expectation), real \(mean)")
+            XCTAssertEqual(distr.expectation, expectation, accuracy: accuracy, "expectation: expected \(distr.expectation), real \(expectation)")
             XCTAssertEqual(distr.variance, variance, accuracy: accuracy, "variance: expected \(distr.variance), real \(variance)")
         }
         

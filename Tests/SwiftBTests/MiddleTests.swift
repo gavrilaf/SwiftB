@@ -1,4 +1,5 @@
 import XCTest
+import Numerics
 @testable import SwiftB
 
 final class MiddleTests: XCTestCase {
@@ -9,8 +10,8 @@ final class MiddleTests: XCTestCase {
         XCTAssertEqual([1, 1, 1].mean(), 1)
         XCTAssertEqual([1, 2, 3].mean(), 2)
         
-        XCTAssertEqual([1.1, 1.2, 1.3, 1.4, 1.5].mean(), 1.3, accuracy: TH.accuracy)
-        XCTAssertEqual([5, 6].mean(), 5.5, accuracy: TH.accuracy)
+        XCTAssertEqual([1.1, 1.2, 1.3, 1.4, 1.5].mean(), 1.3, accuracy: T.accuracy)
+        XCTAssertEqual([5, 6].mean(), 5.5, accuracy: T.accuracy)
     }
     
     func testMedian() {

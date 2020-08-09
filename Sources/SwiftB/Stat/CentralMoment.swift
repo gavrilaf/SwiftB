@@ -6,31 +6,29 @@ extension Array where Self.Element: Real {
     public func centralMoment(order: Int) -> Self.Element  {
         guard count != 0 else { return 0 }
         
-        typealias E = Self.Element
-        
         let mean = self.mean()
         
-        var sum = Self.Element(0)
+        var sum = Element.zero
         self.withUnsafeBufferPointer { (buf) in
             for i in 0..<self.count {
-                sum += Self.Element.pow(buf[i] - mean, order)
+                sum += Element.pow(buf[i] - mean, order)
             }
         }
         
-        return sum / Self.Element(count)
+        return sum / Element(count)
     }
 }
 
 extension Array where Self.Element: BinaryInteger {
     public func centralMoment(order: Int) -> Double  {
-        guard count != 0 else { return 0 }
+        guard count != 0 else { return Double.zero }
         
         let mean = self.mean()
         
-        var sum = 0.0
+        var sum = Double.zero
         self.withUnsafeBufferPointer { (buf) in
             for i in 0..<self.count {
-                sum += Double.pow(Double(buf[i]) - mean, order)
+                sum += pow(Double(buf[i]) - mean, Double(order))
             }
         }
         
@@ -39,3 +37,22 @@ extension Array where Self.Element: BinaryInteger {
 }
 
 
+extension Array where Self.Element: Real {
+    func expectation() -> Element {
+        return mean()
+    }
+    
+    func variance() -> Element {
+        return centralMoment(order: 2)
+    }
+}
+
+extension Array where Self.Element: BinaryInteger {
+    func expectation() -> Double {
+        return mean()
+    }
+    
+    func variance() -> Double {
+        return centralMoment(order: 2)
+    }
+}

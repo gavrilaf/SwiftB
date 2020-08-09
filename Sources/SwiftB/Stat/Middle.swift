@@ -1,35 +1,41 @@
 import Foundation
 import Numerics
 
-extension Array where Self.Element: Real {
-    public func mean() -> Self.Element  {
-        guard count != 0 else { return 0 }
+/**
+ * Array elements sum
+ */
+extension Array where Self.Element: AdditiveArithmetic {
+    public func sum() -> Element {
+        var sum = Element.zero
         
-        var sum = Self.Element(0)
         self.withUnsafeBufferPointer { (buf)in
             for i in 0..<self.count {
                 sum += buf[i]
             }
         }
         
-        return sum / Self.Element(count)
+        return sum
+    }
+}
+
+/**
+* Array mean
+*/
+extension Array where Self.Element: Real {
+    public func mean() -> Element  {
+        guard count != 0 else { return Element.zero }
+        return self.sum() / Element(count)
     }
 }
 
 extension Array where Self.Element: BinaryInteger {
     public func mean() -> Double  {
-        guard count != 0 else { return 0 }
-        
-        var sum = 0.0
-        self.withUnsafeBufferPointer { (buf)in
-            for i in 0..<self.count {
-                sum += Double(buf[i])
-            }
-        }
-        
-        return sum / Double(count)
+        guard count != 0 else { return Double.zero }
+        let s = self.sum()
+        return Double(s) / Double(count)
     }
 }
+ 
 
 
 extension SwiftB {

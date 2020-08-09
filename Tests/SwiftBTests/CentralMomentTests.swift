@@ -10,7 +10,7 @@ final class CentralMomentsTests: XCTestCase {
             let moment = s.centralMoment(order: order)
             let expected = expected[order]
             
-            XCTAssertEqual(expected, moment, accuracy: TH.accuracy, "central moment for order \(order), expected \(expected), actual \(moment)")
+            XCTAssertEqual(expected, moment, accuracy: T.accuracy, "central moment for order \(order), expected \(expected), actual \(moment)")
         }
     }
     
@@ -22,7 +22,7 @@ final class CentralMomentsTests: XCTestCase {
             let moment = s.centralMoment(order: order)
             let expected = expected[order]
             
-            XCTAssertEqual(expected, moment, accuracy: Float(TH.accuracy), "central moment for order \(order), expected \(expected), actual \(moment)")
+            XCTAssertEqual(expected, moment, accuracy: Float(T.accuracy), "central moment for order \(order), expected \(expected), actual \(moment)")
         }
     }
     
@@ -30,13 +30,13 @@ final class CentralMomentsTests: XCTestCase {
         let s: [Double] = []
         let moment = s.centralMoment(order: 1)
         
-        XCTAssertEqual(0.0, moment, accuracy: TH.accuracy)
+        XCTAssertEqual(0.0, moment, accuracy: T.accuracy)
     }
     
     func testOneItem() {
         let moment = [1.0].centralMoment(order: 1)
         
-        XCTAssertEqual(0, moment, accuracy: TH.accuracy)
+        XCTAssertEqual(0, moment, accuracy: T.accuracy)
     }
     
 }
