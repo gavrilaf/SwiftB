@@ -38,21 +38,21 @@ extension Array where Self.Element: BinaryInteger {
 
 
 extension Array where Self.Element: Real {
-    func expectation() -> Element {
+    public func expectation() -> Element {
         return mean()
     }
     
-    func variance() -> Element {
+    public func variance() -> Element {
         return centralMoment(order: 2)
     }
 }
 
 extension Array where Self.Element: BinaryInteger {
-    func expectation() -> Double {
+    public func expectation() -> Double {
         return mean()
     }
     
-    func variance() -> Double {
+    public func variance() -> Double {
         return centralMoment(order: 2)
     }
 }

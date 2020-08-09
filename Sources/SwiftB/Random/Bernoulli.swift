@@ -28,15 +28,3 @@ public struct BernoulliDistribution: DiscreteRandomVariable {
     
     public let probability: Double
 }
-
-extension BernoulliDistribution {
-    public func expectedFrequencies(count: Int) -> [Int] {
-        let d = (Double(count)*probability, Double(count) - Double(count)*probability)
-        
-        if probability >= 0.5 {
-            return [min(Int(d.0), Int(d.1)), max(Int(d.0), Int(d.1))]
-        }
-        
-        return [max(Int(d.0), Int(d.1)), min(Int(d.0), Int(d.1))]
-    }
-}
