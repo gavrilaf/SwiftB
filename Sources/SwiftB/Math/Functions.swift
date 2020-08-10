@@ -17,7 +17,31 @@ public func lnFuctorial<T: BinaryInteger>(_ n: T) -> Double {
     return Double.logGamma(Double(n) + 1.0)
 }
 
+/**
+ * Return ln(combination(n, k)) or ln(n choose k)
+ */
+public func lnCombination<T: BinaryInteger>(_ n: T, _ k: T) -> Double {
+    guard n >= k else { return -1 }
+    
+    if n == k || k == 0 {
+        return 0
+    }
+    
+    if k == 1 {
+        return log(Double(n))
+    }
+    
+    let kk: T
+    if 2*k > n {
+        kk = n - k
+    } else {
+        kk = k
+    }
+    
+    return lnFuctorial(n) - lnFuctorial(kk) - lnFuctorial(n - kk)
+}
 
+// MARK:- private
 let factorialTbl = [
     1.0,
     1.0,

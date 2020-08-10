@@ -4,7 +4,7 @@ import XCTest
 final class CentralMomentsTests: XCTestCase {
     func testCentralMoment() {
         let s = [3, -1, 1, 4.1, 4.1, 0.7]
-        let expected = [1, 0, 3.5847222222, -1.5999259259, 20.6794136574]
+        let expected = [1, 0, 3.5847222222222, -1.5999259259259, 20.6794136574]                              
         
         for order in 0..<4 {
             let moment = s.centralMoment(order: order)

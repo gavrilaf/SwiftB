@@ -38,11 +38,24 @@ final class MathTests: XCTestCase {
         XCTAssertEqual(1134.0452317908529, lnFuctorial(250), accuracy: T.accuracy)
     }
     
+    func testLnCombination() {
+        XCTAssertEqual(-1, lnCombination(7, 9), accuracy: T.accuracy)
+        
+        XCTAssertEqual(0, lnCombination(7, 7), accuracy: T.accuracy)
+        XCTAssertEqual(0, lnCombination(7, 0), accuracy: T.accuracy)
+        
+        XCTAssertEqual(3.55534806148941, lnCombination(7, 3), accuracy: T.accuracy)
+        XCTAssertEqual(2.30258509299404, lnCombination(5, 2), accuracy: T.accuracy)
+        XCTAssertEqual(6.21460809842219, lnCombination(500, 1), accuracy: T.accuracy)
+        XCTAssertEqual(46.95109294903053, lnCombination(500, 10), accuracy: T.accuracy)
+    }
+    
         
     static var allTests = [
         ("testEvenOdd", testEvenOdd),
         ("testCloseEqual", testCloseEqual),
-        ("testLnFactorial", testLnFactorial)
+        ("testLnFactorial", testLnFactorial),
+        ("testLnCombination", testLnCombination),
     ]
 }
 
